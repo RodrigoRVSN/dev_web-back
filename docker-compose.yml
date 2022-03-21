@@ -1,0 +1,18 @@
+version: '2.1'
+services:
+  live-reload:
+    image: web-dev
+    build: .
+    environment:
+      PORT: 4000
+    command:
+      - npm
+      - run
+      - live-reload
+    volumes:
+      - .:/web-dev
+      - node_modules:/web-dev/node_modules
+    ports:
+      - 4000:4000
+volumes:
+  node_modules: {}
