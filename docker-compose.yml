@@ -14,5 +14,19 @@ services:
       - node_modules:/web-dev/node_modules
     ports:
       - 4000:4000
+  test-watch:
+    image: web-dev
+    build: .
+    environment:
+      PORT: 4000
+    command:
+      - npm
+      - run
+      - test:watch
+    volumes:
+      - .:/web-dev
+      - node_modules:/web-dev/node_modules
+    ports:
+      - 4000:4000
 volumes:
   node_modules: {}

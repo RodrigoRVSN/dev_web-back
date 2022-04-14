@@ -1,4 +1,4 @@
-- Technologies:
+Technologies:
 
 - Typescript
 - Node

@@ -8,13 +8,15 @@
     "start": "node dist/server.js",
     "live-reload": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/server.ts",
     "test": "jest",
-    "live-reload:docker": "docker-compose up --build live-reload"
+    "live-reload:docker": "docker-compose up --build live-reload",
+    "test:docker": "docker-compose up --build test-watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3",
+    "pg": "^8.7.3",
     "pino": "^7.9.1",
     "pino-pretty": "^7.5.4"
   },
