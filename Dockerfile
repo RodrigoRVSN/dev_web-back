@@ -4,10 +4,10 @@ WORKDIR /web-dev/
 
 COPY package.json yarn.lock /web-dev/
 
-RUN npm install
+RUN yarn install --immutable --immutable-cache --check-cache --frozen-lockfile
 
 COPY . .
 
 USER node
 
-CMD npm run live-reload
+CMD yarn live-reload
