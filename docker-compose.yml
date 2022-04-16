@@ -1,5 +1,18 @@
-version: '2.1'
+version: '3.7'
 services:
+  database:
+    image: postgres
+    container_name: database_miakhats
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=mia
+      - POSTGRES_PASSWORD=mia
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/src/infra/database/schema.sql
+      - pgdata:/data/postgres
+
   live-reload:
     image: web-dev
     build: .
@@ -9,11 +22,16 @@ services:
       - npm
       - run
       - live-reload
-    volumes:
-      - .:/web-dev
-      - node_modules:/web-dev/node_modules
     ports:
       - 4000:4000
+    volumes:
+      - .:/web-dev
+    links:
+      - database
+    depends_on: 
+      - database
+    restart: always
+
   test-watch:
     image: web-dev
     build: .
@@ -28,5 +46,8 @@ services:
       - node_modules:/web-dev/node_modules
     ports:
       - 4000:4000
+
 volumes:
   node_modules: {}
+  pgdata: 
+    driver: local

@@ -11,6 +11,8 @@
     "live-reload": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/server.ts",
     "test": "jest",
     "test:coverage": "jest --coverage",
+
+    "database:docker": "docker-compose up database",
     "live-reload:docker": "docker-compose up --build live-reload",
     "test:docker": "docker-compose up --build test-watch"
   },
