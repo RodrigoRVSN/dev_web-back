@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": ".",
+    "paths": {
+      "@controllers/*": ["./src/controllers/*"],
+      "@models/*": ["./src/models/*"],
+      "@infra/*": ["./src/infra/*"],
+    },
     "target": "es5",
     "outDir": "dist",
     "rootDirs": [

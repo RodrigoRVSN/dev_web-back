@@ -26,6 +26,7 @@ services:
       - 4000:4000
     volumes:
       - .:/web-dev
+      - node_modules:/spotify-radio/node_modules
     links:
       - database
     depends_on: 

@@ -1,7 +1,7 @@
-import { PORT } from 'config/constants';
-import { logger } from 'config/logger';
+import { PORT } from '@infra/config/constants';
+import { logger } from '@infra/config/logger';
+import { query } from '@infra/database';
 import express from 'express';
-import { query } from 'infra/database';
 
 const app = express();
 app.use(express.json());
