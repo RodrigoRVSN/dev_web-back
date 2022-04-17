@@ -6,6 +6,6 @@ const petsRoutes = Router();
 petsRoutes.get('/', petsController().findAll);
 petsRoutes.get('/:id', petsController().findById);
 petsRoutes.post('/create', petsController().create);
-petsRoutes.delete('/:id', petsController().delete);
+petsRoutes.delete('/remove/:id', petsController().delete);
 
 export { petsRoutes };

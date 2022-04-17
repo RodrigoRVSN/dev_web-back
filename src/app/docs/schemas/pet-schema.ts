@@ -22,5 +22,20 @@ export const petSchema = {
     adopter_id: {
       type: 'string',
     },
+    adopter_name: {
+      type: 'string',
+    },
+    adopter_phone: {
+      type: 'string',
+    },
+    adopter_cpf: {
+      type: 'string',
+    },
+    adopter_address: {
+      type: 'string',
+    },
+    adopted_date: {
+      type: 'string',
+    },
   },
 };

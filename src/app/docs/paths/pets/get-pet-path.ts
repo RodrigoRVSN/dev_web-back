@@ -1,18 +1,19 @@
-export const petCreatePath = {
-  post: {
+export const getPetPath = {
+  get: {
     tags: ['Pets'],
-    summary: 'API to create a Pet',
-    requestBody: {
-      content: {
-        'application/json': {
-          schema: {
-            $ref: '#/schemas/petCreateSchema',
-          },
+    summary: 'API to get one Pet',
+    parameters: [
+      {
+        name: 'id',
+        in: 'path',
+        required: true,
+        schema: {
+          type: 'string',
         },
       },
-    },
+    ],
     responses: {
-      201: {
+      200: {
         description: 'Success',
         content: {
           'application/json': {
