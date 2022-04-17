@@ -1,11 +1,11 @@
+import {
+  DB_URL,
+} from '@domain/helpers/constants';
 import { Client } from 'pg';
 
 const client = new Client({
-  host: 'database',
-  port: 5432,
-  user: 'mia',
-  password: 'mia',
-  database: 'miakhats',
+  connectionString: DB_URL,
+  ssl: { rejectUnauthorized: false },
 });
 
 client.connect();
