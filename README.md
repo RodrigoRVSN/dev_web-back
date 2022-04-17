@@ -4,3 +4,4 @@ Technologies:
 - Node
 - Docker
 - Jest
+- Swagger

@@ -1,9 +1,10 @@
 import {
-  petCreateParamsSchema,
+  petCreateParamsSchema, adopterCreateParamsSchema, adopterSchema, petSchema,
 } from './schemas/';
-import { petSchema } from './schemas/pet-schema';
 
 export default {
   petCreateSchema: petCreateParamsSchema,
   petSchema,
+  adopterCreateSchema: adopterCreateParamsSchema,
+  adopterSchema,
 };

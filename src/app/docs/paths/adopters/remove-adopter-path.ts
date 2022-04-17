@@ -1,6 +1,6 @@
-export const removePetPath = {
+export const removeAdopterPath = {
   delete: {
-    tags: ['Pets'],
+    tags: ['Adopters'],
     summary: 'API to delete one Adopter',
     parameters: [
       {

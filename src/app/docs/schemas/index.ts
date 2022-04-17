@@ -1,2 +1,2 @@
-export * from './pet-create-params-schema';
-export * from './pet-schema';
+export * from './adopters';
+export * from './pets';
