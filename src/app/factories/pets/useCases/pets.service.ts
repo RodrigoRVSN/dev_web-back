@@ -31,15 +31,15 @@ class PetsService implements IPetsService {
     return row;
   }
 
-  async delete(id) {
+  async delete(id: string) {
     await query(`
-      UPDATE contacts
-      SET category_id = NULL
-      WHERE category_id = $1
+      UPDATE adopters
+      SET pet_id = NULL
+      WHERE pet_id = $1
     `, [id]);
 
     const deleteOp = await query(`
-      DELETE FROM categories
+      DELETE FROM pets
       WHERE id = $1
     `, [id]);
 

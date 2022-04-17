@@ -26,6 +26,14 @@ class PetsController implements IPetsController {
 
     res.status(200).json(pet);
   }
+
+  async delete(req: Request, res: Response) {
+    const { id } = req.params;
+
+    await PetsService().delete(id);
+
+    res.status(204).json({ Message: 'The pet has been deleted' });
+  }
 }
 
 export default () => new PetsController();
