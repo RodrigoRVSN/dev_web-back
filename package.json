@@ -7,7 +7,7 @@
     "build": "tsc",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "start": "node dist/app/config/server.js",
+    "start": "node dist/src/app/config/server.js",
     "live-reload": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/app/config/server.ts",
     "test": "jest",
     "test:coverage": "jest --coverage",

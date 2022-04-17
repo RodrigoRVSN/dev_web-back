@@ -5,4 +5,4 @@ build:
     PORT: 4000
 
 run:
-  web: npm start
+  web: yarn live-reload
