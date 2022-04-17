@@ -3,6 +3,6 @@ export interface IPetModel {
   name: string
   breed: string
   gender: string
-  birth_date: Date
-  adopted_date?: Date
+  birth_date: string
+  adopted_date?: string
 }
