@@ -41,7 +41,7 @@ class PetsService implements IPetsService {
     const deleteOp = await query(`
       DELETE FROM pets
       WHERE id = $1
-    `, [id]);
+    `, [id]) as [];
 
     return deleteOp;
   }
