@@ -14,9 +14,11 @@ class PetsController implements IPetsController {
   }
 
   async findAll(req: Request, res: Response) {
-    const pet = await PetsService().findAll();
+    const { orderBy } = req.query;
 
-    res.status(200).json(pet);
+    const pets = await PetsService().findAll(String(orderBy));
+
+    res.status(200).json(pets);
   }
 
   async findById(req: Request, res: Response) {
