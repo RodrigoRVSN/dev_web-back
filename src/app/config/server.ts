@@ -1,3 +1,4 @@
+import setupSwagger from '@app/config/config-swagger';
 import { logger } from '@app/config/logger';
 import setupMiddlewares from '@app/config/middlewares';
 import setupRoutes from '@app/config/routes';
@@ -6,6 +7,7 @@ import express from 'express';
 
 const app = express();
 
+setupSwagger(app);
 setupMiddlewares(app);
 setupRoutes(app);
 
