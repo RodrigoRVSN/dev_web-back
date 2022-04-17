@@ -4,5 +4,5 @@ export interface IPetModel {
   breed: string
   gender: string
   birth_date: string
-  adopted_date?: string
+  adopter_id?: string
 }

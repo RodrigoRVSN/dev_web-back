@@ -5,21 +5,21 @@ import { IAdopterService } from './IAdopterService';
 
 class AdopterService implements IAdopterService {
   async create({
-    name, phone, pet_id, cpf, address,
+    name, phone, cpf, address, pet_id,
   }: IAdopterModel) {
     const dateNow = new Date() as unknown as string;
 
-    await query(`
-      UPDATE pets
-      SET adopted_date = $1
-      WHERE id = $2
-    `, [dateNow, pet_id]);
-
     const [row] = await query(`
-      INSERT INTO adopters(name, phone, pet_id, cpf, address)
+      INSERT INTO adopters(name, phone, cpf, address, adopted_date)
       VALUES($1, $2, $3, $4, $5)
       RETURNING *
-    `, [name, phone, pet_id, cpf, address]);
+    `, [name, phone, cpf, address, dateNow]);
+
+    await query(`
+      UPDATE pets
+      SET adopter_id = $1
+      WHERE id = $2
+    `, [row.id, pet_id]);
 
     return row;
   }
@@ -40,13 +40,6 @@ class AdopterService implements IAdopterService {
   }
 
   async delete(id: string) {
-    await query(`
-      UPDATE pets
-      SET adopted_date = NULL
-      FROM adopters
-      WHERE adopters.pet_id = pets.id
-    `, []);
-
     const deleteOp = await query(`
       DELETE 
       FROM adopters
