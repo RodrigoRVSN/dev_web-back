@@ -10,11 +10,19 @@ class PetsController implements IPetsController {
 
     const pet = await PetsService().create(data);
 
-    res.status(200).json({ pet });
+    res.status(201).json({ pet });
   }
 
   async findAll(req: Request, res: Response) {
     const pet = await PetsService().findAll();
+
+    res.status(200).json(pet);
+  }
+
+  async findById(req: Request, res: Response) {
+    const { id } = req.params;
+
+    const pet = await PetsService().findById(id);
 
     res.status(200).json(pet);
   }

@@ -21,10 +21,10 @@ class PetsService implements IPetsService {
     return rows;
   }
 
-  async findById(id) {
+  async findById(id: string) {
     const [row] = await query(`
       SELECT *
-      FROM categories
+      FROM pets
       WHERE id = $1
     `, [id]);
 
@@ -44,17 +44,6 @@ class PetsService implements IPetsService {
     `, [id]);
 
     return deleteOp;
-  }
-
-  async update(id, name) {
-    const [row] = await query(`
-      UPDATE categories
-      SET name = $1
-      WHERE id = $2
-      RETURNING *
-    `, [name, id]);
-
-    return row;
   }
 }
 
