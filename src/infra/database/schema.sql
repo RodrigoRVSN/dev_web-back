@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS adopters (
   cpf VARCHAR,
   address VARCHAR NOT NULL,
   adopted_date DATE NOT NULL
-);  
+);
 
 CREATE TABLE IF NOT EXISTS pets (
   id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
