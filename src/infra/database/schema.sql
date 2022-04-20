@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS pets (
   gender VARCHAR NOT NULL,
   birth_date DATE,
   age_group VARCHAR NOT NULL,
+  image VARCHAR,
   adopter_id UUID,
   FOREIGN KEY(adopter_id) REFERENCES adopters(id) ON DELETE CASCADE
 );

@@ -1,4 +1,5 @@
 import { IPetModel } from '@domain/models/pets';
+import { IUploadFile, uploadFile } from '@infra/upload';
 import { Request, Response } from 'express';
 
 import { IPetsController } from './IPetsController';
@@ -7,8 +8,10 @@ import PetsService from './pets.service';
 class PetsController implements IPetsController {
   async create(req: Request, res: Response) {
     const data = req.body as IPetModel;
+    const uploadedImage = req.file;
 
-    const pet = await PetsService().create(data);
+    const { Location } = await uploadFile(uploadedImage) as unknown as IUploadFile;
+    const pet = await PetsService().create({ ...data, image: Location });
 
     res.status(201).json({ pet });
   }
