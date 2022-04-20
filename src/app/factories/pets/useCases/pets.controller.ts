@@ -1,5 +1,6 @@
 import { IPetModel } from '@domain/models/pets';
 import { IUploadFile, uploadFile } from '@infra/upload';
+import { splitToDeleteS3Object } from '@infra/upload/fileUpload';
 import { Request, Response } from 'express';
 
 import { IPetsController } from './IPetsController';
@@ -35,9 +36,11 @@ class PetsController implements IPetsController {
   async delete(req: Request, res: Response) {
     const { id } = req.params;
 
+    const pet = await PetsService().findById(id);
     await PetsService().delete(id);
+    splitToDeleteS3Object(pet.image);
 
-    res.status(204).json({ Message: 'The pet has been deleted' });
+    res.status(204).json({ message: 'O animal foi deletado' });
   }
 }
 

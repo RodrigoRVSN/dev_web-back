@@ -24,16 +24,22 @@ async function deleteFromS3(key: string) {
     .promise();
 }
 
+function splitToDeleteS3Object(image_url: string) {
+  const bucketSplitted = image_url.split('/');
+  const keyOfBucket = bucketSplitted[bucketSplitted.length - 1];
+  deleteFromS3(keyOfBucket);
+}
+
 function uploadFile(file) {
   const fileStream = fs.createReadStream(file.path);
 
   const uploadParams = {
     Bucket: AWS_BUCKET,
     Body: fileStream,
-    Key: file.originalname,
+    Key: file.filename,
   };
 
   return s3.upload(uploadParams).promise();
 }
 
-export { upload, deleteFromS3, uploadFile };
+export { upload, splitToDeleteS3Object, uploadFile };
