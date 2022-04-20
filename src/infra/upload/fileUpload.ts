@@ -37,6 +37,7 @@ function uploadFile(file) {
     Bucket: AWS_BUCKET,
     Body: fileStream,
     Key: file.filename,
+    ContentType: 'image/png',
   };
 
   return s3.upload(uploadParams).promise();
