@@ -16,6 +16,10 @@ export const petCreateParamsSchema = {
     age_group: {
       type: 'string',
     },
+    image: {
+      type: 'string',
+      format: 'binary',
+    },
   },
   required: ['name', 'breed', 'gender', 'age_group'],
 };

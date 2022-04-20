@@ -16,6 +16,9 @@ export const petSchema = {
     birth_date: {
       type: 'string',
     },
+    image: {
+      type: 'string',
+    },
     age_group: {
       type: 'string',
     },

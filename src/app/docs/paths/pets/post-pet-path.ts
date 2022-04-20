@@ -4,7 +4,7 @@ export const postPetPath = {
     summary: 'API to create a Pet',
     requestBody: {
       content: {
-        'application/json': {
+        'multipart/form-data': {
           schema: {
             $ref: '#/schemas/petCreateSchema',
           },
