@@ -1,3 +1,4 @@
+import { formatEmptyValues } from '@domain/helpers/utils/formatEmptyValues';
 import { IAdopterModel } from '@domain/models/adopters';
 import { Request, Response } from 'express';
 
@@ -7,6 +8,8 @@ import { IAdopterController } from './IAdopterController';
 class AdopterController implements IAdopterController {
   async create(req: Request, res: Response) {
     const data = req.body as IAdopterModel;
+
+    formatEmptyValues(data);
 
     const adopter = await AdopterService().create(data);
 

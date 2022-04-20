@@ -1,3 +1,4 @@
+import { formatEmptyValues } from '@domain/helpers/utils/formatEmptyValues';
 import { IPetModel } from '@domain/models/pets';
 import { IUploadFile, uploadFile } from '@infra/upload';
 import { splitToDeleteS3Object } from '@infra/upload/fileUpload';
@@ -10,6 +11,8 @@ class PetsController implements IPetsController {
   async create(req: Request, res: Response) {
     const data = req.body as IPetModel;
     const uploadedImage = req.file;
+
+    formatEmptyValues(data);
 
     const { Location } = await uploadFile(uploadedImage) as unknown as IUploadFile;
     const pet = await PetsService().create({ ...data, image: Location });
