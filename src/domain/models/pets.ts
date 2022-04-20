@@ -6,4 +6,5 @@ export interface IPetModel {
   birth_date?: string
   age_group: string
   adopter_id?: string
+  image?: string
 }

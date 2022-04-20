@@ -5,13 +5,13 @@ import { IPetsService } from './IPetsService';
 
 class PetsService implements IPetsService {
   async create({
-    name, breed, gender, birth_date, age_group,
+    name, breed, gender, birth_date, age_group, image,
   }: IPetModel) {
     const [row] = await query(`
-      INSERT INTO pets(name, breed, gender, birth_date, age_group)
-      VALUES($1, $2, $3, $4, $5)
+      INSERT INTO pets(name, breed, gender, birth_date, age_group, image)
+      VALUES($1, $2, $3, $4, $5, $6)
       RETURNING *
-    `, [name, breed, gender, birth_date, age_group]);
+    `, [name, breed, gender, birth_date, age_group, image]);
 
     return row;
   }

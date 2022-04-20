@@ -5,7 +5,6 @@ import { Client } from 'pg';
 
 const client = new Client({
   connectionString: DB_URL,
-  ssl: { rejectUnauthorized: false },
 });
 
 client.connect();
