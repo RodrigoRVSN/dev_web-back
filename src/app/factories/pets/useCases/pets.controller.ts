@@ -1,3 +1,4 @@
+import { STATUS } from '@domain/helpers/constants';
 import { formatEmptyValues } from '@domain/helpers/utils/formatEmptyValues';
 import { IPetModel } from '@domain/models/pets';
 import { IUploadFile, uploadFile } from '@infra/upload';
@@ -17,7 +18,7 @@ class PetsController implements IPetsController {
     const { Location } = await uploadFile(uploadedImage) as unknown as IUploadFile;
     const pet = await PetsService().create({ ...data, image: Location });
 
-    res.status(201).json({ pet });
+    res.status(STATUS.CREATED_CONTENT).json({ pet });
   }
 
   async findAll(req: Request, res: Response) {
@@ -25,7 +26,7 @@ class PetsController implements IPetsController {
 
     const pets = await PetsService().findAll(String(orderBy));
 
-    res.status(200).json(pets);
+    res.status(STATUS.SUCCESS).json(pets);
   }
 
   async findById(req: Request, res: Response) {
@@ -33,7 +34,7 @@ class PetsController implements IPetsController {
 
     const pet = await PetsService().findById(id);
 
-    res.status(200).json(pet);
+    res.status(STATUS.SUCCESS).json(pet);
   }
 
   async delete(req: Request, res: Response) {
@@ -43,7 +44,7 @@ class PetsController implements IPetsController {
     await PetsService().delete(id);
     splitToDeleteS3Object(pet.image);
 
-    res.status(204).json({ message: 'O animal foi deletado' });
+    res.status(STATUS.EMPTY_CONTENT).json({ message: 'O animal foi deletado' });
   }
 }
 

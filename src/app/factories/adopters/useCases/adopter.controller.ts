@@ -1,3 +1,4 @@
+import { STATUS } from '@domain/helpers/constants';
 import { formatEmptyValues } from '@domain/helpers/utils/formatEmptyValues';
 import { IAdopterModel } from '@domain/models/adopters';
 import { Request, Response } from 'express';
@@ -13,13 +14,13 @@ class AdopterController implements IAdopterController {
 
     const adopter = await AdopterService().create(data);
 
-    res.status(201).json({ adopter });
+    res.status(STATUS.CREATED_CONTENT).json({ adopter });
   }
 
   async findAll(req: Request, res: Response) {
     const adopter = await AdopterService().findAll();
 
-    res.status(200).json(adopter);
+    res.status(STATUS.SUCCESS).json(adopter);
   }
 
   async findById(req: Request, res: Response) {
@@ -27,7 +28,7 @@ class AdopterController implements IAdopterController {
 
     const adopter = await AdopterService().findById(id);
 
-    res.status(200).json(adopter);
+    res.status(STATUS.SUCCESS).json(adopter);
   }
 
   async delete(req: Request, res: Response) {
@@ -35,7 +36,7 @@ class AdopterController implements IAdopterController {
 
     const adopter = await AdopterService().delete(id);
 
-    res.status(204).json(adopter);
+    res.status(STATUS.EMPTY_CONTENT).json(adopter);
   }
 }
 
