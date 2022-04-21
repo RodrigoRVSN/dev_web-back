@@ -1,3 +1,4 @@
+import { IPetsController } from '@app/factories/repositories/pets.repository';
 import { AppError } from '@domain/errors/AppError';
 import { STATUS } from '@domain/helpers/constants';
 import { formatEmptyValues } from '@domain/helpers/utils/formatEmptyValues';
@@ -6,7 +7,6 @@ import { IUploadFile, uploadFile } from '@infra/upload';
 import { splitToDeleteS3Object } from '@infra/upload/fileUpload';
 import { Request, Response } from 'express';
 
-import { IPetsController } from './IPetsController';
 import PetsService from './pets.service';
 
 class PetsController implements IPetsController {

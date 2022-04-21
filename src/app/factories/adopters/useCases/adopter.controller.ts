@@ -1,3 +1,4 @@
+import { IAdopterController } from '@app/factories/repositories/adopters.repository';
 import { AppError } from '@domain/errors/AppError';
 import { STATUS } from '@domain/helpers/constants';
 import { formatEmptyValues } from '@domain/helpers/utils/formatEmptyValues';
@@ -5,7 +6,6 @@ import { IAdopterModel } from '@domain/models/adopters';
 import { Request, Response } from 'express';
 
 import AdopterService from './adopter.service';
-import { IAdopterController } from './IAdopterController';
 
 class AdopterController implements IAdopterController {
   async create(req: Request, res: Response) {
