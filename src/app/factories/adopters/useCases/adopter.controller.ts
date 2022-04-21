@@ -1,9 +1,11 @@
+import { IAdopterController } from '@app/factories/repositories/adopters.repository';
+import { AppError } from '@domain/errors/AppError';
+import { STATUS } from '@domain/helpers/constants';
 import { formatEmptyValues } from '@domain/helpers/utils/formatEmptyValues';
 import { IAdopterModel } from '@domain/models/adopters';
 import { Request, Response } from 'express';
 
 import AdopterService from './adopter.service';
-import { IAdopterController } from './IAdopterController';
 
 class AdopterController implements IAdopterController {
   async create(req: Request, res: Response) {
@@ -13,13 +15,13 @@ class AdopterController implements IAdopterController {
 
     const adopter = await AdopterService().create(data);
 
-    res.status(201).json({ adopter });
+    res.status(STATUS.CREATED_CONTENT).json(adopter);
   }
 
   async findAll(req: Request, res: Response) {
     const adopter = await AdopterService().findAll();
 
-    res.status(200).json(adopter);
+    res.status(STATUS.SUCCESS).json(adopter);
   }
 
   async findById(req: Request, res: Response) {
@@ -27,15 +29,21 @@ class AdopterController implements IAdopterController {
 
     const adopter = await AdopterService().findById(id);
 
-    res.status(200).json(adopter);
+    res.status(STATUS.SUCCESS).json(adopter);
   }
 
   async delete(req: Request, res: Response) {
     const { id } = req.params;
 
-    const adopter = await AdopterService().delete(id);
+    const adopter = await AdopterService().findById(id);
 
-    res.status(204).json(adopter);
+    if (!adopter) {
+      throw new AppError('Animal não encontrado', STATUS.NOT_FOUND);
+    }
+
+    await AdopterService().delete(id);
+
+    res.status(STATUS.EMPTY_CONTENT).send();
   }
 }
 
