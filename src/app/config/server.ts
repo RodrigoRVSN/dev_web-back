@@ -4,6 +4,7 @@ import setupMiddlewares from '@app/config/middlewares';
 import setupRoutes from '@app/config/routes';
 import { PORT } from '@domain/helpers/constants';
 import express from 'express';
+import 'express-async-errors';
 
 const app = express();
 

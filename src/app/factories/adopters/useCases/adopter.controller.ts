@@ -1,3 +1,4 @@
+import { AppError } from '@domain/errors/AppError';
 import { STATUS } from '@domain/helpers/constants';
 import { formatEmptyValues } from '@domain/helpers/utils/formatEmptyValues';
 import { IAdopterModel } from '@domain/models/adopters';
@@ -14,7 +15,7 @@ class AdopterController implements IAdopterController {
 
     const adopter = await AdopterService().create(data);
 
-    res.status(STATUS.CREATED_CONTENT).json({ adopter });
+    res.status(STATUS.CREATED_CONTENT).json(adopter);
   }
 
   async findAll(req: Request, res: Response) {
@@ -34,9 +35,15 @@ class AdopterController implements IAdopterController {
   async delete(req: Request, res: Response) {
     const { id } = req.params;
 
-    const adopter = await AdopterService().delete(id);
+    const adopter = await AdopterService().findById(id);
 
-    res.status(STATUS.EMPTY_CONTENT).json(adopter);
+    if (!adopter) {
+      throw new AppError('Animal não encontrado', STATUS.NOT_FOUND);
+    }
+
+    await AdopterService().delete(id);
+
+    res.status(STATUS.EMPTY_CONTENT).send();
   }
 }
 

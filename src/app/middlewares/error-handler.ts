@@ -1,8 +1,19 @@
-import { logger } from '@app/config/logger';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { AppError } from '@domain/errors/AppError';
 import { STATUS } from '@domain/helpers/constants';
+import {
+  NextFunction, Request, Response,
+} from 'express';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const errorHandler = (error, req, res, next) => {
-  logger.error(`Error handler! ⚠️ -> ${error}`);
-  res.sendStatus(STATUS.SERVER_ERROR);
+export const errorHandler = (error: Error, req: Request, res: Response, next: NextFunction) => {
+  if (error instanceof AppError) {
+    return res.status(error.statusCode).json({
+      message: error.message,
+    });
+  }
+
+  return res.status(STATUS.SERVER_ERROR).json({
+    status: 'error',
+    message: `Internal server error - ${error.message}`,
+  });
 };
