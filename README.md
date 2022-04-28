@@ -1,14 +1,13 @@
-# miakhats
+# Miakhats API
 
 <!--- https://shields.io --->
 
-![GitHub repo size](https://img.shields.io/github/repo-size/rodrigorvsn/miakhats?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/rodrigorvsn/miakhats?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/rodrigorvsn/miakhats?style=for-the-badge)
-![Bitbucket open issues](https://img.shields.io/bitbucket/issues/rodrigorvsn/miakhats?style=for-the-badge)
-![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/rodrigorvsn/miakhats?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/rodrigorvsn/dev_web-back?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/rodrigorvsn/dev_web-back?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/rodrigorvsn/dev_web-back?style=for-the-badge)
+![Bitbucket open issues](https://img.shields.io/bitbucket/issues/rodrigorvsn/dev_web-back?style=for-the-badge)
+![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/rodrigorvsn/dev_web-back?style=for-the-badge)
 
-___
 <!--- #################### mudar badges #################### --->
 
 ![image](https://user-images.githubusercontent.com/75763403/165654110-a2de08fb-b536-49bf-b6e9-fa9001465d7f.png)
@@ -38,12 +37,12 @@ Technologies:
 
 <!--- #################### mudar ferramentas #################### --->
 ___
-## 🚀 Installing miakhats
+## 🚀 Installing dev_web-back
 
 To use, follow the steps:
 
 ```bash
-git clone https://github.com/rodrigorvsn/miakhats.git
+git clone https://github.com/rodrigorvsn/dev_web-back.git
 ```
 
 ```bash
@@ -72,9 +71,9 @@ docker exec -it database_miakhats bash
 
 - Connect the tables of the schema in the database.
 
-## 📫 Contribuiting with miakhats
+## 📫 Contribuiting with dev_web-back
 
-To contribue with miakhats, follow the steps:
+To contribue with dev_web-back, follow the steps:
 
 1. Fork this repository.
 2. Create a branch: `git checkout -b <name_branch>`.
