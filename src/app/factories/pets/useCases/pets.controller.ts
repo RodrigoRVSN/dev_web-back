@@ -3,8 +3,7 @@ import { AppError } from '@domain/errors/AppError';
 import { STATUS } from '@domain/helpers/constants';
 import { formatEmptyValues } from '@domain/helpers/utils/formatEmptyValues';
 import { IPetModel } from '@domain/models/pets';
-import { IUploadFile, uploadFile } from '@infra/upload';
-import { splitToDeleteS3Object } from '@infra/upload/fileUpload';
+import { IUploadFile, uploadFile, splitToDeleteS3Object } from '@infra/upload';
 import { Request, Response } from 'express';
 
 import PetsService from './pets.service';

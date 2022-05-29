@@ -63,13 +63,19 @@ yarn database:docker
 docker exec -it database_miakhats bash
 ```
 
+- Enter with the user
+
+```bash
+psql -U mia
+```
+
 - Create the database in PostgreSQL image
 
 ```bash
-/c miakhats
+\c miakhats
 ```
 
-- Connect the tables of the schema in the database.
+- Connect the tables of the schema in the database (copy after line 3 in schema.sql).
 
 ## 📫 Contribuiting with dev_web-back
 

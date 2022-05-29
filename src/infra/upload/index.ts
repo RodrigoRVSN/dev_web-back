@@ -1,2 +1,2 @@
-export { upload, deleteFromS3, uploadFile } from './fileUpload';
+export { upload, splitToDeleteS3Object, uploadFile } from './fileUpload';
 export { IUploadFile } from './fileUpload.types';
