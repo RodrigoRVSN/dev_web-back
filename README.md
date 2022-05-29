@@ -21,20 +21,24 @@ ___
 - Install LTS Node version.
 - Install Docker
 - Install docker-compose
+
 <!--- #################### mudar pré-requisitos  ####################--->
 ___
 ## 🛠 Tools used
 
 Technologies:
 
-- Typescript
-- Node
-- PostgreSQL (database)
-- Docker 
-- Swagger (documentation)
-- AWS (S3) (image upload)
-- Heroku (deploy)
-
+- Typescript (superset of javascript with typing)
+- Node (to run javascript on server side)
+- express (minimalist nodejs framework)
+- PostgreSQL (database sql)
+- Docker (to create database and server images)
+- swagger-ui (to make a documentation of the endpoints)
+- aws-sdk (to make image upload to S3 of AWS cloud services)
+- Heroku (to deploy the database and the server)
+- pino (to make logs)
+- eslint (linter to keep a pattern between files)
+ 
 <!--- #################### mudar ferramentas #################### --->
 ___
 ## 🚀 Installing dev_web-back
@@ -63,7 +67,7 @@ yarn database:docker
 docker exec -it database_miakhats bash
 ```
 
-- Enter with the user
+- Enter in the database with his password
 
 ```bash
 psql -U mia
