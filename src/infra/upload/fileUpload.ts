@@ -30,7 +30,9 @@ function splitToDeleteS3Object(image_url: string) {
   deleteFromS3(keyOfBucket);
 }
 
-function uploadFile(file) {
+function uploadFile(file): Promise<aws.S3.ManagedUpload.SendData> | null {
+  if (!file) return null;
+
   const fileStream = fs.createReadStream(file.path);
 
   const uploadParams = {

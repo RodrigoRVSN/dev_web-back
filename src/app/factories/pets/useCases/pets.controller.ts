@@ -15,8 +15,8 @@ class PetsController implements IPetsController {
 
     formatEmptyValues(data);
 
-    const { Location } = await uploadFile(uploadedImage) as unknown as IUploadFile;
-    const pet = await PetsService().create({ ...data, image: Location });
+    const image = await uploadFile(uploadedImage) as unknown as IUploadFile;
+    const pet = await PetsService().create({ ...data, image: image?.Location });
 
     res.status(STATUS.CREATED_CONTENT).json(pet);
   }
