@@ -47,7 +47,10 @@ class PetsController implements IPetsController {
     }
 
     await PetsService().delete(id);
-    splitToDeleteS3Object(pet.image);
+
+    if (pet.image) {
+      splitToDeleteS3Object(pet.image);
+    }
 
     res.status(STATUS.EMPTY_CONTENT).send();
   }
